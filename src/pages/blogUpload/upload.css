@@ -2,18 +2,58 @@
   max-width: 1240px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 0 9px black;
+  box-shadow: 0 0 9px rgb(150 150 150 / 32%);
   border-radius: 5px;
   margin: 0 auto;
+  padding: 2%;
 }
 
 .blogImagePreview {
   max-width: 120px;
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 10%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   z-index: 3;
+  border-radius: 5px;
 }
 .contentContainer {
   position: relative;
+}
+.container input,
+select {
+  padding: 1%;
+  border-radius: 5px;
+  border: 1px solid rgb(232, 232, 232);
+  outline: none;
+  margin: 1% 0;
+  box-shadow: 0 4px 8px 0px #6969693b;
+  width: 98%;
+}
+.container button {
+  width: fit-content;
+  margin: 1% 0;
+  border: none;
+  font-weight: 600;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  border: 1px solid rgb(232, 232, 232);
+  border-radius: 0px 5px 0px 5px;
+  padding: 1%;
+  box-shadow: 0 4px 8px 0px #6969693b;
+}
+.addBlockDiv {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 1%;
+  z-index: 99;
+  background: #5d5d5d0f;
+  backdrop-filter: blur(3px);
+  padding: 0% 1%;
+}
+.flex_gap_div {
+  display: flex;
+  gap: 1%;
 }

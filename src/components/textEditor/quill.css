@@ -4,6 +4,6 @@
 }
 .quillContainer {
   height: 500px;
-  margin: 2%;
-  border: 1px solid;
+  margin: 2% 0;
+  border: 1px solid rgb(176, 176, 176);
 }

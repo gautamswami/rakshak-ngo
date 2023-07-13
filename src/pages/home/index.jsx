@@ -8,7 +8,6 @@ import {
 } from "../../Context/ThemeContext";
 
 import "./home.css";
-import "./home.module.css";
 
 import SimpleSlider from "./carousel";
 import HomeHeader from "./header";
