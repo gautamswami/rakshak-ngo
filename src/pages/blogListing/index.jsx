@@ -1,7 +1,8 @@
-import React from 'react'
+import React from "react";
+import { useLanguage } from "../../Context/ThemeContext";
 
 export default function BlogListing() {
-  return (
-    <div>BlogListing</div>
-  )
+  const { language } = useLanguage();
+
+  return <div>BlogListing{language}</div>;
 }

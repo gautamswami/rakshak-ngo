@@ -1,18 +1,29 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
-import { useThemeUpdate } from "../../Context/ThemeContext";
+import {
+  useLanguage,
+  useTheme,
+  useThemeUpdate,
+  useLanguageUpdate,
+} from "../../Context/ThemeContext";
+
+import "./home.css";
+import SimpleSlider from "./carousel";
+import HomeHeader from "./header";
+
 export default function Home() {
-  const toggleTheme = useThemeUpdate()
+  const toggleTheme = useThemeUpdate();
+  const darktheme = useTheme();
+  const { language, langOptions } = useLanguage();
+  const toggleLanguage = useLanguageUpdate();
   return (
     <div>
       <Helmet>
         <title>HOME</title>
         <meta name="description" content="home page" />
       </Helmet>
-      Home
-      <Link to="/blogs">BLOG</Link>
-      <button onClick={toggleTheme}>CHANGE</button>
+      <HomeHeader />
+      <SimpleSlider />
     </div>
   );
 }

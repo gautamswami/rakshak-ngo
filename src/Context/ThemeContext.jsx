@@ -2,38 +2,45 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 const ThemeContext = createContext();
 const ThemeUpdateContext = createContext();
+const LanguageContext = createContext();
+const LanguagUpdateContext = createContext();
 export function useTheme() {
   return useContext(ThemeContext);
 }
 export function useThemeUpdate() {
   return useContext(ThemeUpdateContext);
 }
+export function useLanguage() {
+  return useContext(LanguageContext);
+}
+export function useLanguageUpdate() {
+  return useContext(LanguagUpdateContext);
+}
 export function ThemeProvider({ children }) {
   const [darktheme, setDarkTheme] = useState(false);
   function toggleTheme() {
     setDarkTheme(!darktheme);
-    localStorage.setItem("theme-preference", darktheme);
-    if (darktheme) {
-        document.body.classList.remove("dark");
-    } else {
-          document.body.classList.add("dark");
-      }
+  }
+  const [language, setLanguage] = useState("english");
+  const langOptions = ["english", "hindi"];
+  function toggleLanguage(lang) {
+    setLanguage(lang);
   }
   useEffect(() => {
-    let preference = localStorage.getItem("theme-preference");
-    preference = Boolean(preference);
-    setDarkTheme(preference);
-    console.log("ran", darktheme, "pref", preference);
-    if (preference) {
+    if (darktheme === true) {
       document.body.classList.add("dark");
     } else {
       document.body.classList.remove("dark");
     }
-  }, []);
+  }, [darktheme]);
   return (
     <ThemeContext.Provider value={darktheme}>
       <ThemeUpdateContext.Provider value={toggleTheme}>
-        {children}
+        <LanguageContext.Provider value={{langOptions, language}}>
+          <LanguagUpdateContext.Provider value={toggleLanguage}>
+            {children}
+          </LanguagUpdateContext.Provider>
+        </LanguageContext.Provider>
       </ThemeUpdateContext.Provider>
     </ThemeContext.Provider>
   );
