@@ -1,0 +1,19 @@
+.container {
+  max-width: 1240px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 9px black;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+.blogImagePreview {
+  max-width: 120px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+.contentContainer {
+  position: relative;
+}

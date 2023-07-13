@@ -1,7 +1,5 @@
 /* CAROUSEL CSS */
-body {
-  overflow: hidden;
-}
+
 .slide_container {
   height: 100vh;
   position: relative;

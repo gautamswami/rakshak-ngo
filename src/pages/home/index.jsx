@@ -8,6 +8,8 @@ import {
 } from "../../Context/ThemeContext";
 
 import "./home.css";
+import "./home.module.css";
+
 import SimpleSlider from "./carousel";
 import HomeHeader from "./header";
 
@@ -16,6 +18,7 @@ export default function Home() {
   const darktheme = useTheme();
   const { language, langOptions } = useLanguage();
   const toggleLanguage = useLanguageUpdate();
+
   return (
     <div>
       <Helmet>
