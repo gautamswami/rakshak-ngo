@@ -1,6 +1,6 @@
 /* CAROUSEL CSS */
 body {
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .slide_container {
   height: 100vh;
