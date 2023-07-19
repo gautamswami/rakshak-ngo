@@ -5,7 +5,9 @@ import ImageInput from "../../components/imageInput";
 export default function BlogUpload() {
   const [pageContent, setpageContent] = useState([]);
   const bottomRef = useRef(null);
-  const [isAuthorised, setIsAuthorised] = useState(false);
+  const [isAuthorised, setIsAuthorised] = useState(true);
+  const [details, setDetails] = useState({ tags: [] });
+  const [tagString, setTagString] = useState("");
   const handleBlockAdd = (blocktype) => {
     setpageContent([
       ...pageContent,
@@ -18,6 +20,7 @@ export default function BlogUpload() {
     setpageContent(updatedData);
   };
   const dataFromImage = (data, blockId) => {
+    // UPLOAD TO CLOUDINARY AND ADD LINK HERE
     const updatedData = [...pageContent];
     updatedData[blockId] = { ...updatedData[blockId], image: data };
     setpageContent(updatedData);
@@ -30,13 +33,35 @@ export default function BlogUpload() {
     };
     setpageContent(updatedData);
   };
-  const handleInputChange = (e) => {
-    setAuthor(e.target.value);
+  const handleChange = (e) => {
+    setDetails({ ...details, [e.target.name]: e.target.value });
   };
   const handleVerify = (e) => {
     setIsAuthorised(true);
   };
 
+  const handleChangeTags = (e) => {
+    setTagString(e.target.value);
+    console.log(tagString);
+  };
+  const handleEnterPress = (event) => {
+    console.log("User pressed: ", event.key);
+
+    if (event.key === "Enter") {
+      // 👇️ your logic here
+      console.log("Enter key pressed ✅");
+      setDetails({ ...details, tags: [...details.tags, tagString] });
+      setTagString("");
+    }
+  };
+  const handleRemoveTag = (index) => {
+    const updatedItems = details?.tags.filter((_, i) => i !== index);
+    setDetails({ ...details, tags: updatedItems });
+  };
+  const handleSubmit = () => {
+    // SLUG GET FROM TITLE
+    console.log(JSON.stringify(details), JSON.stringify(pageContent));
+  };
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [pageContent]);
@@ -44,24 +69,42 @@ export default function BlogUpload() {
     <div className="container">
       {isAuthorised ? (
         <>
-          <input placeholder="Add a title " />
+          <input
+            placeholder="Add a title "
+            onChange={handleChange}
+            name="title"
+          />
           <div className="flex_gap_div">
-            <select>
+            <select onChange={handleChange} name="category">
               <option>CATEGORY</option>
               <option>Category one</option>
               <option>Category one</option>
               <option>Category one</option>
               <option>Category one</option>
             </select>
-            <select>
+            <select onChange={handleChange} name="language">
               <option>HINDI</option>
               <option>ENGLISH</option>
             </select>
           </div>
           <div className="flex_gap_div">
-            <input placeholder="Author" onChange={handleInputChange} />
-            <input placeholder="TAG" />
+            <input placeholder="Author" onChange={handleChange} name="author" />
+
+            <input
+              placeholder="TAG"
+              onChange={handleChangeTags}
+              name="tags"
+              onKeyDown={handleEnterPress}
+              value={tagString}
+            />
           </div>
+          {details?.tags?.map((tag, id) => {
+            return (
+              <h1 key={id} onClick={() => handleRemoveTag(id)}>
+                {tag}
+              </h1>
+            );
+          })}
           {/* *press ENTER after every tag */}
           <div className="addBlockDiv">
             <button onClick={() => handleBlockAdd("image")}>+ ADD IMAGE</button>
@@ -93,12 +136,13 @@ export default function BlogUpload() {
                 {content.query === "videolink" && (
                   <input
                     placeholder="Enter video url"
-                    onChange={(e) => handleVideoLink(e, blockId)}
+                    onChange={(e) => handleVideoLink(e, index)}
                   />
                 )}
               </div>
             );
           })}
+          <button onClick={() => handleSubmit()}>SUBMIT</button>
           <span ref={bottomRef}></span>
         </>
       ) : (

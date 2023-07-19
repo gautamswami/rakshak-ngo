@@ -30,6 +30,20 @@ select {
   box-shadow: 0 4px 8px 0px #6969693b;
   width: 98%;
 }
+
+.inputDiv {
+  padding: 1%;
+  border-radius: 5px;
+  border: 1px solid rgb(232, 232, 232);
+  outline: none;
+  margin: 1% 0;
+  box-shadow: 0 4px 8px 0px #6969693b;
+  width: fit-content;
+  font-family: sans-serif;
+  min-width: 150px;
+  max-width: 500px;
+}
+
 .container button {
   width: fit-content;
   margin: 1% 0;
