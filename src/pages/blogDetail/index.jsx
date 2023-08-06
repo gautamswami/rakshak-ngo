@@ -2,6 +2,11 @@ import React from 'react'
 
 export default function BlogDetail() {
   return (
-    <div>BLogDetail</div>
+    <div>
+      <h1>
+        
+        BLogDetail HI
+        </h1>
+        </div>
   )
 }

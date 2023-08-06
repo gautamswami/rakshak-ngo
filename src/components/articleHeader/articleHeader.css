@@ -1,0 +1,88 @@
+.ar_header_container {
+  background: black;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+}
+.header_logo {
+  width: 82px;
+  height: 63px;
+  transform: skew(20deg, 0deg);
+  background: transparent;
+}
+.header_content {
+  border-right: 2px solid white;
+  background: transparent;
+  padding: 3% 3%;
+  transform: skew(-20deg, 0deg);
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.content_1 {
+  padding: 3% 6%;
+}
+.header_content h1 {
+  color: white;
+  transform: skew(20deg, 0deg);
+  font-size: 20px;
+  background: transparent;
+}
+.content_2:hover {
+  background-color: #000080;
+  cursor: pointer;
+}
+.content_3:hover {
+  background-color: #ff4500;
+  cursor: pointer;
+}
+.content_4:hover {
+  background-color: #f8a71e;
+  cursor: pointer;
+}
+.header_right_content {
+  flex-grow: 1;
+  place-content: end;
+  border-right: none;
+  transform: unset;
+  gap: 3%;
+}
+.search_icon {
+  width: 15px;
+  height: 15px;
+}
+
+.search_div {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 35%;
+  background: transparent;
+}
+.search_icon {
+  background: transparent;
+  position: absolute;
+  left: 2%;
+}
+.search_field {
+  padding: 2%;
+  background-color: black;
+  border: 2px solid white;
+  border-radius: 5px;
+  width: 100%;
+  padding: 3% 9%;
+  outline: none;
+}
+.user_icon {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+}
+.right_content {
+  background: transparent;
+}
